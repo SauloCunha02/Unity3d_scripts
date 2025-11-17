@@ -3,14 +3,15 @@ using UnityEngine;
 public class InstanciarDiamantes : MonoBehaviour
 {
 [SerializeField]private GameObject diamantePrefab;
+[SerializeField]private Transform[] pontosDeSpawn;
 private int totalDiamante = 5;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        float posX = Random.Range(0, 200);
-        float posY = Random.Range(0, 200);
+        
         for(int i = 0; i < totalDiamante; i++){
-        Instantiate(diamantePrefab, new Vector3(posX, 100, posY), Quaternion.identity);
+        int ramdomIndex =  Random.Range(0, pontosDeSpawn.Length);
+        Instantiate(diamantePrefab, pontosDeSpawn[ramdomIndex].position, Quaternion.identity);
         }
     }
 
