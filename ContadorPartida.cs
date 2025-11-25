@@ -10,4 +10,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
         contador += Time.deltaTime;
         jogadorUI.AtualizarContador(contador);
     }
+
+    public void SalvarResultado()
+    {
+        GerenciarRecords.SalvarTempoPartida(contador);
+    }
 }

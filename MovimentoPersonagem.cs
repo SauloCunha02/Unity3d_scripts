@@ -9,10 +9,13 @@ public class MovimentoPersonagem : MonoBehaviour
     [Header("Configurações de Movimento")]
     [SerializeField] private float velocidadeMovimento = 5f;
     [SerializeField] private float velocidadeRotacao = 10f;
-    
+
     [Header("Física")]
     [SerializeField] private float forcaGravidade = -9.81f;
-    
+
+    [SerializeField] private AudioSource passosAudioSource;
+    [SerializeField] private AudioClip[] passosAudioClips;
+
     // ========== COMPONENTES ==========
     private CharacterController characterController;
     private Animator animator;
@@ -101,5 +104,11 @@ public class MovimentoPersonagem : MonoBehaviour
         
         // Aplica gravidade
         characterController.Move(gravidade * Time.deltaTime);
+    }
+
+    private void OnPassos()
+    {
+        int index = Random.Range(0, passosAudioClips.Length);
+        passosAudioSource.PlayOneShot(passosAudioClips[index]);
     }
 }
